@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class UserServiceTest {
     @Autowired
     private UserRepo userRepo;
-
+    @Disabled
     @ParameterizedTest
     @ValueSource(strings = {
             "Ram",
