@@ -23,7 +23,6 @@ public class UserService {
         private UserRepo UserRepository;
 
         private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//    private static final Logger logger = LoggerFactory.getLogger(UserService.class); no need to instantiate logger manually as slf4j provide its own instance for logging ie: log
         public boolean saveNewUser(User user){
             try {
                 user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -31,11 +30,11 @@ public class UserService {
                 UserRepository.save(user);
                 return true;
             } catch (Exception e) {
-                log.trace("Traced");
-                log.debug("Debugged");
-                log.info("Duplicate key hitten");
-                log.warn("WARNED");
-                log.error("error occured for {}",user.getUserName(), e);
+                log.trace("User already created or exists {}", user.getUserName(),e);
+                log.debug("User already created or exists {}", user.getUserName(),e);
+                log.warn("User already created or exists {}", user.getUserName(),e);
+                log.info("User already created or exists {}", user.getUserName(),e);
+                log.error("User already created or exists {}", user.getUserName(),e);
                 return false;
             }
         }
