@@ -2,6 +2,7 @@ package com.anish.journalApp.entity;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+import com.anish.journalApp.enums.Sentiment;
 import lombok.*;
 import org.bson.codecs.ObjectIdCodec;
 import org.bson.codecs.ObjectIdGenerator;
@@ -20,5 +21,6 @@ public class JournalEntry {
     private String title;
     private String content;
     private LocalDateTime date;
+    private Sentiment sentiment;
 
 }
