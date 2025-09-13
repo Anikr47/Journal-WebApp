@@ -1,5 +1,6 @@
 package com.anish.journalApp.scheduler;
 
+import com.anish.journalApp.cache.AppCache;
 import com.anish.journalApp.entity.JournalEntry;
 import com.anish.journalApp.entity.User;
 import com.anish.journalApp.enums.Sentiment;
@@ -26,6 +27,8 @@ public class UserScheduler {
     UserRepositoryIMPL userRepository;
     @Autowired
     private KafkaTemplate<String, SentimentData> kafkaTemplate;
+    @Autowired
+    private AppCache appCache;
     @Scheduled(cron = "0 0 9 * * SUN")
     public void fetchUserAndSendMail(){
         List<User> users = userRepository.getUserForSA();
@@ -56,6 +59,9 @@ public class UserScheduler {
         }
 
     }
-
+    @Scheduled(cron = "0 0/10 * ? * *")
+    public void clearAppCache() {
+        appCache.init();
+    }
 }
 

@@ -9,10 +9,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class UserSchedulerTest {
     @Autowired
-    UserScheduler userScheduler;
+    private UserScheduler userScheduler;
+
     @Disabled
     @Test
-    public void testForMailSA(){
+    public void fetchUserAndSendMailTest(){
         userScheduler.fetchUserAndSendMail();
 
     }
