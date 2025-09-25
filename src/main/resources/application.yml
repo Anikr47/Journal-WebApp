@@ -1,17 +1,18 @@
+
 weather:
   api:
     key: ${WEATHER_API_KEY}
 
 spring:
   server:
-    port: ${SERVER_PORT}
+    port: ${PORT}
   data:
     mongodb:
       uri: ${MONGO_DB_URI}
       database: journalDB
       auto-index-creation: true
   redis:
-    url: redis://default:bCQSzgBNiyJACA33PuchvPn5TVzRp3cU@redis-11452.c212.ap-south-1-1.ec2.redns.redis-cloud.com:11452
+    url: ${REDIS_CLOUD_URL}
   profiles:
     active: dev
   mail:
