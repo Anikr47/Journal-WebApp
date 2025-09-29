@@ -1,8 +1,10 @@
 package com.anish.journalApp.utils;
 
+import com.anish.journalApp.constants.Placeholders;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -13,8 +15,8 @@ import java.util.Map;
 @Component
 public class JwtUtils {
 
-
-    private String SECRET_KEY = "TaK+HaV^uvCHEFsEVfzpW#7h9^k*Z8$V";
+    @Value("${jwt.secret.key}")
+    private String SECRET_KEY;
 
     private SecretKey getSigningKey() {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
