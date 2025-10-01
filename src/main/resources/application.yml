@@ -1,3 +1,6 @@
+springdoc:
+  swagger_ui:
+    path: ${SWAGGER_PATH}
 jwt:
   secret:
     key: ${jwt_secret_key}

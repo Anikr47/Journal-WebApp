@@ -2,6 +2,7 @@ package com.anish.journalApp.cache;
 
 import com.anish.journalApp.entity.ConfigJournalApp;
 import com.anish.journalApp.repository.ConfigJournalAppRepo;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
