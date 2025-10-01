@@ -1,0 +1,67 @@
+springdoc:
+  swagger_ui:
+    path: ${SWAGGER_PATH}
+jwt:
+  secret:
+    key: ${jwt_secret_key}
+weather:
+  api:
+    key: ${WEATHER_API_KEY}
+
+spring:
+  server:
+    port: ${PORT}
+  data:
+    mongodb:
+      uri: ${MONGO_DB_URI}
+      database: journalDB
+      auto-index-creation: true
+  redis:
+    url: ${REDIS_CLOUD_URL}
+  profiles:
+    active: dev
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${GOOGLE_GMAIL_CLIENT}
+    password: ${GOOGLE_GMAIL_APP_PSSWD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVER}
+    producer:
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: weekly-sentiment-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: com.anish.journalApp.model
+    properties:
+      sasl:
+        jaas:
+          config: ${KAFKA_CONFIG_SECRET}
+      mechanism: PLAIN
+      security:
+        protocol: SASL_SSL
+      session:
+        timeout:
+          ms: 45000
+  client:
+    id: ${KAFKA_CLIENT_ID}
+
+
+#logging:
+#  level:
+#    com:
+#      anish:
+#        journalApp: TRACE
+

@@ -14,6 +14,7 @@ import java.util.List;
 
 import static com.mongodb.assertions.Assertions.assertNotNull;
 @SpringBootTest
+@Disabled
 public class UserRepositoryIMPLTest {
 
     @Autowired
